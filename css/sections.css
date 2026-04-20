@@ -5,6 +5,7 @@
 /* ─── Hero ─── */
 #hero {
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -37,9 +38,10 @@
 .hero-h1 {
   font-size: clamp(36px, 6vw, 60px);
   font-weight: 700;
-  letter-spacing: -1px;
+  letter-spacing: -1.5px;
   line-height: 1.05;
   margin-bottom: 32px;
+  text-wrap: balance;
 }
 .hero-h1 em {
   font-style: normal;
@@ -62,8 +64,9 @@
   color: var(--text2);
   font-size: 18px;
   line-height: 1.7;
-  max-width: 560px;
+  max-width: 65ch;
   margin-bottom: 36px;
+  text-wrap: pretty;
 }
 
 .hero-metrics { display: flex; gap: 48px; flex-wrap: wrap; }
@@ -73,6 +76,8 @@
   font-size: 30px;
   font-weight: 700;
   color: var(--green);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.5px;
 }
 .metric-label {
   font-size: 12px;

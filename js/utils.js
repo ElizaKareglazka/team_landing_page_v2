@@ -105,8 +105,9 @@ function initScrollReveal() {
 function initNavHighlight() {
   const navLinks = document.querySelectorAll('#mainNav a');
   const sections = document.querySelectorAll('section[id]');
+  let ticking = false;
 
-  window.addEventListener('scroll', () => {
+  const update = () => {
     let current = '';
     sections.forEach(section => {
       if (window.scrollY >= section.offsetTop - 200) {
@@ -114,9 +115,17 @@ function initNavHighlight() {
       }
     });
     navLinks.forEach(a => {
-      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--green)' : '';
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
     });
-  });
+    ticking = false;
+  };
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(update);
+      ticking = true;
+    }
+  }, { passive: true });
 
   // Burger menu
   const burger = document.getElementById('burger');
